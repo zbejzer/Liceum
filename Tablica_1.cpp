@@ -11,15 +11,15 @@ void wczytanie() {
 	}
 }
 
-void wypisanie() {
+void wypisanie(int tablica[]) {
 	for(int i=0; i<10; i++) {
-		cout<<i+1<<" liczba to: "<<tab[i]<<endl;
+		cout<<i+1<<" liczba to: "<<tablica[i]<<endl;
 	}
 }
 
 int main() {
 	wczytanie();
-	wypisanie();
+	wypisanie(tab);
 	
 	cin.sync();
 	getchar();
