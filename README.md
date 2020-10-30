@@ -1,0 +1,1 @@
+# Centrum-Mistrzostwa-Informatycznego
