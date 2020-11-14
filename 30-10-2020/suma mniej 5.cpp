@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    int wejscie, suma;
+    float wejscie, suma;
 
     for(int i = 0; i < 10; i++){
         cin >> wejscie;

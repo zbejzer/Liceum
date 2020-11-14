@@ -1,16 +1,20 @@
 #include <iostream>
-#include <string>
+#include <string.h>
+#include <limits.h>
 #include <algorithm>
 
 using namespace std;
 
 int main(){
-    int suma;
-    string wejscie;
+    int suma=0;
+    char imie[CHAR_MAX];
 
-    cin >> wejscie;
+    cout << "Podaj imie: ";
+    cin >> imie;
     
-    suma = count(wejscie.begin(), wejscie.end(), 'a');
+    for(int i=0; i<strlen(imie); i++)
+        if(imie[i]=='a' || imie[i]=='A')
+            suma++;
 
     cout << suma;
 

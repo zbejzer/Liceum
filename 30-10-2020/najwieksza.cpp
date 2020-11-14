@@ -9,10 +9,12 @@ int main(){
 
     for(int i = 0; i < 10; i++){
         cin >> wejscie[i];
+
+        if(wejscie[i] <= 0)
+            i--;
     }
 
-    sort(wejscie, wejscie+10);
-    cout << wejscie[9];
+    cout << *max_element(wejscie, wejscie+10);;
 
     cin.ignore(INT_MAX, 10);
     getchar();
