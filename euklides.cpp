@@ -7,7 +7,7 @@ int nwd_dzielenie(int a, int b){
     int reszta = 1, dzielnik, dzielna;
 
     dzielnik=min(a, b);
-    dzielna=max(a,b);
+    dzielna=max(a, b);
 
     while(reszta != 0){
         reszta = dzielna%dzielnik;
