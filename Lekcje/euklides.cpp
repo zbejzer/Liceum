@@ -4,19 +4,13 @@
 using namespace std;
 
 int nwd_dzielenie(int a, int b){
-    int reszta = 1, dzielnik, dzielna;
-
-    dzielnik=min(a, b);
-    dzielna=max(a, b);
-
-    while(reszta != 0){
-        reszta = dzielna%dzielnik;
-        dzielna = dzielnik;
-        if(reszta != 0)
-            dzielnik = reszta;
+    while(a > 0)
+    {
+        a %= b;
+        b -= a;
     }
 
-    return dzielnik;
+    return b;
 }
 
 int nwd_odejmowanie(int a, int b){
