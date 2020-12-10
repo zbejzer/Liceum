@@ -2,7 +2,7 @@
 
 using namespace std;
 
-__uint128_t silnia(int liczba){
+__UINT64_TYPE__ silnia(int liczba){
     if(liczba > 0)
         return liczba*silnia(liczba-1);
     else 

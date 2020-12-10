@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 #include <vector>
 
 using namespace std;
@@ -28,12 +29,12 @@ int main()
 		cin >> wsp[i];
 	}
 	
-	cout << "Podaj argument: ";
+	cout << "Podaj argument dla wielomianu: ";
 	cin >> argument;
 	
 	cout << "W(" << argument << ") = " << horner(wsp, argument) << endl;
 	
-	cin.ignore();
-	getchar();
+	cin.ignore(INT_MAX, '\n');
+    getchar();
 	return 0;
 }
