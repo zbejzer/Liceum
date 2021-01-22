@@ -23,6 +23,23 @@ void wybor(int tab[], int n)
     }
 }
 
+
+void babelkowe(int tab[], int n)
+{
+    for(int i=0; i<n; i++)
+		for(int j=1; j<n-i; j++)
+        {
+            // porownywanie
+            if(tab[j-1]>tab[j])
+            {
+                //zamiana miejscami
+                int temp = tab[j];
+                tab[j] = tab[j-1];
+                tab[j-1] = temp;
+            }
+        }
+}
+
 void wypisz(int tab[], int n)
 {
     for(int i=0; i<n; i++)
@@ -30,7 +47,7 @@ void wypisz(int tab[], int n)
 }
 
 int main(){
-    int n;
+    int n, metoda;
 
     cout << "Podaj ilosc liczb do posortowania: \n";
     cin >> n;
@@ -43,7 +60,24 @@ int main(){
         cin >> tab[i];
     }
 
-    wybor(tab, n);
+    cout << "Wybierz metode sortowania: \n";
+    cout << "[0] Sortowanie przez wybieranie. \n";
+    cout << "[1] Sortowanie babelkowe. \n";
+    cin >> metoda;
+
+    switch(metoda)
+    {
+        case 0:
+        {
+            wybor(tab, n);
+            break;
+        }
+        case 1:
+        {
+            babelkowe(tab, n);
+            break;
+        }
+    }
 
     wypisz(tab, n);
 
