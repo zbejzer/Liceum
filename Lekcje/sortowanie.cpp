@@ -32,7 +32,7 @@ void babelkowe(int tab[], int n)
             // porownywanie
             if(tab[j-1]>tab[j])
             {
-                //zamiana miejscami
+                //zamiana miejscami tab[i] i tab[min]
                 int temp = tab[j];
                 tab[j] = tab[j-1];
                 tab[j-1] = temp;
