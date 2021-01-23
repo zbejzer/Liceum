@@ -23,7 +23,6 @@ void wybor(int tab[], int n)
     }
 }
 
-
 void babelkowe(int tab[], int n)
 {
     for(int i=0; i<n; i++)
