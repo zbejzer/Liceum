@@ -1,3 +1,5 @@
+// Wersja 2.0.0
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -24,12 +26,6 @@ double selection(int tab[], int n)
 
     auto end = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(end - start).count();
-
-    ofstream debug("selection.txt");
-    debug << "\nSTART [" << n << "]\n";
-    for(int i=0; i<n; i++)
-        debug << tab[i] << endl;
-
     return duration  * 1.0 / nano::den;
 }  
 
@@ -41,12 +37,6 @@ double alg_sort(int tab[], int n)
 
     auto end = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(end - start).count();
-
-    ofstream debug("alg_sort.txt");
-    debug << "\nSTART [" << n << "]\n";
-    for(int i=0; i<n; i++)
-        debug << tab[i] << endl;
-
     return duration * 1.0 / nano::den;
 }
 
@@ -72,12 +62,6 @@ double bucket(int tab[], int n)
 
     auto end = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(end - start).count();
-
-    ofstream debug("bucket.txt");
-    debug << "\nSTART [" << n << "]\n";
-    for(int i=0; i<n; i++)
-        debug << tab[i] << endl;
-
     return duration * 1.0 / nano::den;
 }
 
@@ -92,12 +76,6 @@ double bubble(int tab[], int n)
 
     auto end = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(end - start).count();
-
-    ofstream debug("bubble.txt");
-    debug << "\nSTART [" << n << "]\n";
-    for(int i=0; i<n; i++)
-        debug << tab[i] << endl;
-    
     return duration * 1.0 / nano::den;
 }
 
@@ -120,12 +98,6 @@ double insert(int tab[], int n)
 
     auto end = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(end - start).count();
-
-    ofstream debug("insert.txt");
-    debug << "\nSTART [" << n << "]\n";
-    for(int i=0; i<n; i++)
-        debug << tab[i] << endl;
-
     return duration * 1.0 / nano::den;
 }
 
@@ -151,29 +123,27 @@ int main()
     ofstream f_wyj ("pomiary.txt");
     srand(time(NULL));
 
-    int rozmiary[5] {200, 500, 1000, 10000, 100000};
-    int tab1[rozmiary[0]], tab2[rozmiary[1]], tab3[rozmiary[2]], tab4[rozmiary[3]], tab5[rozmiary[4]];
-    int *tablica[5] {tab1, tab2, tab3, tab4, tab5};
-    
+    int rozmiary[] {200, 500, 1000, 10000, 100000};
 
     for(int t=0; t<3; t++)
     {
         for(int i=0; i<5; i++)
         {
+            int tablicaWzor[rozmiary[i]], tablica[rozmiary[i]];
             switch (t)
             {
             case 0:
-                odPdoK(tablica[i], rozmiary[i]);
+                odPdoK(tablicaWzor, rozmiary[i]);
                 cout << "Optymistyczny";
                 f_wyj << "Optymistyczny";
                 break;
             case 1:
-                odKdoP(tablica[i], rozmiary[i]);
+                odKdoP(tablicaWzor, rozmiary[i]);
                 cout << "Pesymistyczny";
                 f_wyj << "Pesymistyczny";
                 break;
             case 2:
-                losowo(tablica[i], rozmiary[i]);
+                losowo(tablicaWzor, rozmiary[i]);
                 cout << "Random";
                 f_wyj << "Random";
                 break;
@@ -181,16 +151,21 @@ int main()
 
             cout << " [" << rozmiary[i] << "]\n";
             f_wyj << " [" << rozmiary[i] << "]\n";
-
-            f_wyj << bubble(tablica[i], rozmiary[i]) << endl;
+            
+            copy(tablicaWzor, tablicaWzor+rozmiary[i], tablica);
+            f_wyj << bubble(tablica, rozmiary[i]) << endl;
             cout << "Bubble, " << flush;
-            f_wyj << bucket(tablica[i], rozmiary[i]) << endl;
+            copy(tablicaWzor, tablicaWzor+rozmiary[i], tablica);
+            f_wyj << bucket(tablica, rozmiary[i]) << endl;
             cout << "Bucket, " << flush;
-            f_wyj << insert(tablica[i], rozmiary[i]) << endl;
+            copy(tablicaWzor, tablicaWzor+rozmiary[i], tablica);
+            f_wyj << insert(tablica, rozmiary[i]) << endl;
             cout << "Insertion, " << flush;
-            f_wyj << alg_sort(tablica[i], rozmiary[i]) << endl;
+            copy(tablicaWzor, tablicaWzor+rozmiary[i], tablica);
+            f_wyj << alg_sort(tablica, rozmiary[i]) << endl;
             cout << "Algorithm, " << flush;
-            f_wyj << selection(tablica[i], rozmiary[i]) << endl;
+            copy(tablicaWzor, tablicaWzor+rozmiary[i], tablica);
+            f_wyj << selection(tablica, rozmiary[i]) << endl;
             cout << "Selection\n" << flush;
         }
         cout << "\n" << endl;
