@@ -54,6 +54,9 @@
         "chrono": "cpp",
         "xstring": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "unordered_set": "cpp",
+        "list": "cpp",
+        "xhash": "cpp"
     }
 }
