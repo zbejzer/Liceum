@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unordered_set>
+#include <unordered_map>
 #include <fstream>
 #include <string>
 
@@ -13,24 +13,24 @@ int main()
     {
         bool isAllAnagrams = true;
         string baseWord, textRow = "";
-        unordered_set<char> baseWordSet;
+        unordered_map<char, int> baseWordSet;
 
         input_data >> baseWord;
         textRow += baseWord + " ";
 
         for(int j=0; j<baseWord.size(); j++)
-            baseWordSet.insert( baseWord.at(j) );
+            baseWordSet[ baseWord.at(j) ]++;
 
         for(int j=0; j<4; j++)
         {
             string  newWord;
-            unordered_set<char> newWordSet;
+            unordered_map<char, int> newWordSet;
 
             input_data >> newWord;
             textRow += newWord + " ";
 
             for(int k=0; k<newWord.size(); k++)
-                newWordSet.insert( newWord.at(k) );
+                newWordSet[ newWord.at(k) ]++;
 
             if( newWordSet != baseWordSet )
                 isAllAnagrams = false;
