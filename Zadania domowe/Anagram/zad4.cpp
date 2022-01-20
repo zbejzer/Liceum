@@ -13,26 +13,26 @@ int main()
     {
         bool isAllAnagrams = true;
         string baseWord, textRow = "";
-        unordered_map<char, int> baseWordSet;
+        unordered_map<char, int> baseWordMap;
 
         input_data >> baseWord;
         textRow += baseWord + " ";
 
         for(int j=0; j<baseWord.size(); j++)
-            baseWordSet[ baseWord.at(j) ]++;
+            baseWordMap[ baseWord.at(j) ]++;
 
         for(int j=0; j<4; j++)
         {
-            string  newWord;
-            unordered_map<char, int> newWordSet;
+            string newWord;
+            unordered_map<char, int> newWordMap;
 
             input_data >> newWord;
             textRow += newWord + " ";
 
             for(int k=0; k<newWord.size(); k++)
-                newWordSet[ newWord.at(k) ]++;
+                newWordMap[ newWord.at(k) ]++;
 
-            if( newWordSet != baseWordSet )
+            if( newWordMap != baseWordMap )
                 isAllAnagrams = false;
         }
 
