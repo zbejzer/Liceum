@@ -11,15 +11,24 @@ bool isBinaryBigger(string a, string b)
     {
         for(int i=0; i<a.size(); i++)
         {
-            if( a.at( a.size() - 1 - i) > b.at( b.size() - 1 - i) )
+            if( a.at( i ) > b.at( i ) )
+            {
+                //cout << a << " wieksza od " << b << endl;
                 return true;
+            }
             else
+            {
+                //cout << b << " wieksza od " << a << endl;
                 return false;
+            }
         }
     }
     else if( a.size() > b.size() )
+    {
+        //cout << a << " wieksza od " << b << endl;
         return true;
-    
+    }
+    //cout << b << " wieksza od " << a << endl;
     return false;
 }
 
@@ -45,7 +54,10 @@ int main()
         }
         
         if( ( new_row.at( new_row.size() - 1 ) == '0' ) && ( digit_count['1'] > digit_count['0'] ) && isBinaryBigger(new_row, max_number) )
+        {
             max_number = new_row;
+            //cout << "nowy max: " << new_row << endl;
+        }
     }
 
     cout << max_number;
