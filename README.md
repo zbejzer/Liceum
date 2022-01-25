@@ -1,2 +1,2 @@
 # Zadania z Liceum
-## W repozytorium znajdują się zadania z lekcji i dodatkowej informatyki
+## W repozytorium znajdują się zadania oraz ich rozwiązania z lekcji i dodatkowej informatyki
