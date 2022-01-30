@@ -2,53 +2,33 @@
 
 using namespace std;
 
-fibonacci(int n){
-    int liczby[3] = {1, 0, 1};
+int fibonacciLoop(int n){
+    int numbers[3] = {1, 1, 1};
 
-    for(int i=1; i<=n; i++){
-        liczby[0] = liczby[1] + liczby[2];
-        cout << liczby[0] << endl;
-        liczby[2] = liczby[1];
-        liczby[1] = liczby[0];
+    for( int i=2; i<n; i++ ){
+        numbers[2] = numbers[0] + numbers[1];
+        numbers[0] = numbers[1];
+        numbers[1] = numbers[2];
     }
+
+    return numbers[2];
 }
 
-n_fibonacci(int n){
-    int liczby[3] = {1, 0, 1};
+int fibonacciRec(int n){
+    if( n<=2 )
+        return 1;
 
-    for(int i=1; i<=n; i++){
-        liczby[0] = liczby[1] + liczby[2];
-        liczby[2] = liczby[1];
-        liczby[1] = liczby[0];
-    }
-
-    cout << liczby[1] << endl;
+    return fibonacciRec(n-1) + fibonacciRec(n-2);   
 }
 
 int main(){
-    int n, c;
+    int n;
 
-    cout << "[0] Podaj ilosc liczb ciagu Fibonacciego do wygenerowania" << endl;
-    cout << "[1] Podaj n-liczbe ciagu Fibonacciego do wygenerowania" << endl;
-    cin >> c;
-    cout << "Podaj n: ";
+    cout << "Enter n-number of fibonacci sequence: ";
     cin >> n;
 
-    switch (c){
-    case 0:
-        fibonacci(n);
-        break;
-
-    case 1:
-        n_fibonacci(n);
-        break;
-    
-    default:
-        break;
-    }
-
-    getchar();
-    getchar();
+    cout << "Loop: " <<  fibonacciLoop(n) << endl;
+    cout << "Recursion: " << fibonacciRec(n) << endl;
 
     return 0;
 }
